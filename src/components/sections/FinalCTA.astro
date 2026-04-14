@@ -1,0 +1,47 @@
+---
+import { site } from '@lib/site';
+---
+
+<section class="section cta-final">
+  <div class="container cta-inner">
+    <span class="eyebrow">05 · Siguiente paso</span>
+    <h2 class="display cta-title">
+      ¿Hablamos de tu próximo proyecto?
+    </h2>
+    <p class="cta-lede">
+      Una llamada de 30 minutos, sin compromiso. Salimos con una idea clara de
+      qué necesitas y un presupuesto honesto.
+    </p>
+    <div class="cta-actions">
+      <a href="/contacto/" class="btn btn-primary btn-lg">Reservar llamada</a>
+      <a href={`mailto:${site.email}`} class="btn btn-ghost btn-lg">{site.email}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-final {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-4);
+    max-width: 56ch;
+  }
+  .cta-title {
+    font-size: var(--fs-hero);
+    line-height: var(--lh-tight);
+  }
+  .cta-lede { color: var(--ink-60); font-size: var(--fs-md); }
+  .cta-actions {
+    display: flex;
+    gap: var(--s-3);
+    margin-top: var(--s-4);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+</style>

@@ -1,0 +1,442 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <svg class="hero-grid" width="100%" height="100%" aria-hidden="true">
+      <defs>
+        <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+          <path d="M 56 0 L 0 0 0 56" fill="none" stroke="rgba(21,19,26,0.05)" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
+    </svg>
+    <div class="noise"></div>
+  </div>
+
+  <div class="container hero-inner">
+    <div class="hero-copy">
+    <div class="hero-kicker">
+      <span class="chip chip-dot">Estudio de diseño digital</span>
+      <span class="hero-kicker-sep">·</span>
+      <span class="hero-kicker-meta">Disponibles en 2026</span>
+    </div>
+
+    <h1 class="display hero-title">
+      Grandes ideas,<br />
+      <span class="hero-title-accent">pequeñas cuotas</span>.
+    </h1>
+
+    <p class="hero-lede">
+      Webs y apps que parecen de otra liga — sin pagar otra liga.
+      Diseño, desarrollo y mantenimiento a tu ritmo.
+    </p>
+
+    <div class="hero-actions">
+      <a href="/contacto/" class="btn btn-primary btn-lg">Cuéntanos tu proyecto</a>
+      <a href="/portfolio/" class="btn btn-ghost btn-lg">Ver portfolio →</a>
+    </div>
+
+    <dl class="hero-stats">
+      <div>
+        <dt>Sin inversión inicial</dt>
+        <dd>arrancas hoy, pagas mañana</dd>
+      </div>
+      <div>
+        <dt>Todo incluido</dt>
+        <dd>diseño, código, hosting y dominio</dd>
+      </div>
+      <div>
+        <dt>Sin ataduras</dt>
+        <dd>te quedas mientras te sirva</dd>
+      </div>
+    </dl>
+    </div>
+
+    <figure class="hero-mock" aria-hidden="true">
+      <span class="hero-mark-ring"></span>
+
+      <div class="mock-browser">
+        <div class="mock-browser-bar">
+          <span class="mock-dot dot-r"></span>
+          <span class="mock-dot dot-y"></span>
+          <span class="mock-dot dot-g"></span>
+          <span class="mock-url">ateneadesigns.es</span>
+        </div>
+        <div class="mock-browser-body">
+          <div class="mock-hero-title">
+            <span class="mock-line mock-line-1"></span>
+            <span class="mock-line mock-line-2"></span>
+          </div>
+          <div class="mock-hero-cta"></div>
+          <div class="mock-grid">
+            <div class="mock-card mc-1"></div>
+            <div class="mock-card mc-2"></div>
+            <div class="mock-card mc-3"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mock-phone">
+        <div class="mock-phone-notch"></div>
+        <div class="mock-phone-screen">
+          <div class="mock-phone-top">
+            <span class="mock-avatar"></span>
+            <span class="mock-bars"><b></b><b></b><b></b></span>
+          </div>
+          <div class="mock-phone-hero"></div>
+          <div class="mock-phone-row"><span></span><span></span></div>
+          <div class="mock-phone-row"><span></span><span></span></div>
+          <div class="mock-phone-btn"></div>
+        </div>
+      </div>
+
+      <span class="mock-cursor">
+        <svg viewBox="0 0 24 24" width="26" height="26">
+          <path d="M4 2 L4 20 L9 16 L12 22 L15 21 L12 15 L19 14 Z"
+                fill="var(--ink)" stroke="white" stroke-width="1.2" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding-block: clamp(4rem, 10vh, 8rem) clamp(5rem, 14vh, 10rem);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    opacity: 0.6;
+  }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    mix-blend-mode: multiply;
+    opacity: 0.55;
+    animation: drift 18s var(--ease-smooth) infinite alternate;
+    will-change: transform;
+  }
+  .blob-1 {
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, var(--purple-500), transparent 70%);
+    top: -12%; left: -6%;
+    animation-delay: -2s;
+  }
+  .blob-2 {
+    width: 460px; height: 460px;
+    background: radial-gradient(circle, var(--pink-500), transparent 70%);
+    top: 20%; right: -8%;
+    animation-duration: 22s;
+  }
+  .blob-3 {
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, var(--orange-500), transparent 70%);
+    bottom: -10%; left: 18%;
+    animation-duration: 26s;
+    animation-delay: -6s;
+  }
+  .blob-4 {
+    width: 340px; height: 340px;
+    background: radial-gradient(circle, var(--blue-500), transparent 70%);
+    bottom: 5%; right: 22%;
+    animation-duration: 20s;
+    animation-delay: -4s;
+  }
+
+  @keyframes drift {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(40px, -30px, 0) scale(1.08); }
+    100% { transform: translate3d(-30px, 20px, 0) scale(0.96); }
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: var(--s-7);
+    align-items: center;
+    max-width: var(--w-wide);
+  }
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-6);
+  }
+
+  .hero-mock {
+    position: relative;
+    justify-self: center;
+    width: min(100%, 560px);
+    aspect-ratio: 1 / 1;
+    margin: 0;
+  }
+
+  .mock-browser {
+    position: absolute;
+    top: 6%;
+    left: 0;
+    width: 82%;
+    aspect-ratio: 16 / 11;
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow:
+      0 30px 60px -18px rgba(21, 19, 26, 0.22),
+      0 10px 24px -10px rgba(123, 47, 190, 0.14),
+      0 0 0 1px rgba(21, 19, 26, 0.06);
+    overflow: hidden;
+    z-index: 2;
+    transform: rotate(-1.5deg);
+  }
+  .mock-browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: var(--paper-warm);
+    border-bottom: 1px solid var(--c-border);
+  }
+  .mock-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ink-20); }
+  .mock-url {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ink-60);
+    background: var(--white);
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--c-border);
+  }
+  .mock-browser-body {
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: calc(100% - 40px);
+    background: var(--white);
+  }
+  .mock-hero-title { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+  .mock-line {
+    height: 14px; border-radius: 4px;
+    background: var(--ink);
+  }
+  .mock-line-1 { width: 72%; }
+  .mock-line-2 { width: 48%; background: var(--ink-20); }
+  .mock-hero-cta {
+    width: 96px; height: 26px;
+    border-radius: 999px;
+    background: var(--ink);
+    margin-top: 2px;
+  }
+  .mock-grid {
+    margin-top: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .mock-card {
+    aspect-ratio: 4 / 5;
+    border-radius: 8px;
+    border: 1px solid var(--c-border);
+    background: var(--paper-warm);
+    position: relative;
+    overflow: hidden;
+  }
+  .mc-1 { background: linear-gradient(135deg, var(--purple-100), var(--purple-300)); }
+  .mc-2 { background: linear-gradient(135deg, var(--orange-100), var(--pink-300)); }
+  .mc-3 { background: linear-gradient(135deg, var(--blue-100), var(--blue-400)); }
+
+  .mock-phone {
+    position: absolute;
+    bottom: 0;
+    right: 2%;
+    width: 32%;
+    aspect-ratio: 9 / 19;
+    background: var(--ink);
+    border-radius: 26px;
+    padding: 7px;
+    box-shadow:
+      0 30px 60px -18px rgba(21, 19, 26, 0.28),
+      0 12px 28px -10px rgba(21, 19, 26, 0.18);
+    z-index: 3;
+    transform: rotate(4deg);
+  }
+  .mock-phone-notch {
+    position: absolute;
+    top: 12px; left: 50%;
+    transform: translateX(-50%);
+    width: 36%; height: 12px;
+    background: #000;
+    border-radius: 999px;
+    z-index: 2;
+  }
+  .mock-phone-screen {
+    position: relative;
+    width: 100%; height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--paper);
+    padding: 26px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .mock-phone-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 6px;
+  }
+  .mock-avatar {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--ink);
+  }
+  .mock-bars { display: inline-flex; gap: 3px; align-items: flex-end; }
+  .mock-bars b {
+    display: block; width: 3px; border-radius: 2px;
+    background: var(--ink);
+  }
+  .mock-bars b:nth-child(1) { height: 6px; }
+  .mock-bars b:nth-child(2) { height: 10px; }
+  .mock-bars b:nth-child(3) { height: 14px; }
+
+  .mock-phone-hero {
+    height: 36%;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--purple-500), var(--pink-500));
+  }
+  .mock-phone-row { display: flex; gap: 8px; }
+  .mock-phone-row span {
+    flex: 1;
+    height: 24px;
+    border-radius: 6px;
+    background: var(--white);
+    border: 1px solid var(--c-border);
+  }
+  .mock-phone-btn {
+    margin-top: auto;
+    height: 32px;
+    border-radius: 999px;
+    background: var(--ink);
+  }
+
+  .mock-cursor {
+    position: absolute;
+    top: 42%;
+    left: 52%;
+    z-index: 4;
+    filter: drop-shadow(0 3px 6px rgba(21, 19, 26, 0.25));
+  }
+  .hero-mark-ring {
+    position: absolute;
+    inset: -8%;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 180deg,
+      var(--purple-500),
+      var(--pink-500),
+      var(--orange-500),
+      var(--yellow-500),
+      var(--green-500),
+      var(--blue-500),
+      var(--purple-500)
+    );
+    opacity: 0.22;
+    filter: blur(50px);
+    z-index: 0;
+    animation: spin 32s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  @media (max-width: 960px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-mock { order: -1; width: min(90%, 440px); }
+  }
+
+  .hero-kicker {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    flex-wrap: wrap;
+    color: var(--ink-60);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+  }
+  .hero-kicker-sep { color: var(--ink-20); }
+
+  .hero-title {
+    font-size: var(--fs-hero);
+    max-width: 14ch;
+    letter-spacing: -0.035em;
+    font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 1;
+    font-weight: 400;
+  }
+  .hero-title-accent {
+    position: relative;
+    display: inline-block;
+    color: var(--ink);
+  }
+  .hero-title-accent::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0.06em;
+    width: 100%;
+    height: 0.12em;
+    background: var(--purple-500);
+    border-radius: 2px;
+  }
+
+  .hero-lede {
+    max-width: 58ch;
+    font-size: var(--fs-md);
+    color: var(--ink-80);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--s-3);
+    flex-wrap: wrap;
+    margin-top: var(--s-3);
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-5);
+    margin-top: var(--s-8);
+    padding-top: var(--s-6);
+    border-top: 1px solid var(--c-border);
+    max-width: 780px;
+  }
+  .hero-stats dt {
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+    font-variation-settings: 'opsz' 144;
+    letter-spacing: var(--tracking-tight);
+  }
+  .hero-stats dd {
+    font-size: var(--fs-sm);
+    color: var(--ink-60);
+    margin-top: var(--s-1);
+  }
+
+  @media (max-width: 640px) {
+    .hero-stats { grid-template-columns: 1fr; }
+  }
+</style>

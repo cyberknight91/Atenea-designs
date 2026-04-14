@@ -1,0 +1,211 @@
+:root {
+  /* Brand palette — extracted from logo */
+  --purple-50:  #f5eeff;
+  --purple-100: #e6d2ff;
+  --purple-200: #cba3ff;
+  --purple-300: #a973f0;
+  --purple-400: #8f4ddb;
+  --purple-500: #7b2fbe;  /* brand */
+  --purple-600: #6522a3;
+  --purple-700: #4f1985;
+  --purple-800: #3a1165;
+  --purple-900: #240a42;
+
+  --pink-50:  #ffeef5;
+  --pink-100: #ffcde0;
+  --pink-200: #ff9bc1;
+  --pink-300: #f76ba4;
+  --pink-400: #ed4a8f;
+  --pink-500: #e4357f;  /* brand */
+  --pink-600: #c12066;
+  --pink-700: #97174f;
+  --pink-800: #6d0f39;
+  --pink-900: #420822;
+
+  --orange-50:  #fff1ea;
+  --orange-100: #ffd7c2;
+  --orange-200: #ffb08a;
+  --orange-300: #ff8a58;
+  --orange-400: #f97340;
+  --orange-500: #f26a3c;  /* brand */
+  --orange-600: #d05326;
+  --orange-700: #a33f1b;
+  --orange-800: #742c12;
+  --orange-900: #451908;
+
+  --yellow-50:  #fff8e4;
+  --yellow-100: #ffebb3;
+  --yellow-200: #ffd973;
+  --yellow-300: #fac94d;
+  --yellow-400: #f7be3f;
+  --yellow-500: #f5b83c;  /* brand */
+  --yellow-600: #d49828;
+  --yellow-700: #a2721c;
+  --yellow-800: #704e12;
+  --yellow-900: #3f2b08;
+
+  --green-50:  #edfbe3;
+  --green-100: #d2f3b7;
+  --green-200: #a6e582;
+  --green-300: #85d45c;
+  --green-400: #74c750;
+  --green-500: #6fbe4c;  /* brand */
+  --green-600: #529a35;
+  --green-700: #3c7625;
+  --green-800: #285318;
+  --green-900: #15310d;
+
+  --blue-50:  #e4f8fd;
+  --blue-100: #b5ebf6;
+  --blue-200: #78d9ec;
+  --blue-300: #48c8e0;
+  --blue-400: #34bedb;
+  --blue-500: #2fb7d4;  /* brand */
+  --blue-600: #1d95b2;
+  --blue-700: #12728a;
+  --blue-800: #0a5163;
+  --blue-900: #04313d;
+
+  --bronze-500: #c9502e;
+
+  /* Neutrals */
+  --ink:        #15131a;
+  --ink-80:     rgba(21, 19, 26, 0.80);
+  --ink-60:     rgba(21, 19, 26, 0.60);
+  --ink-40:     rgba(21, 19, 26, 0.40);
+  --ink-20:     rgba(21, 19, 26, 0.18);
+  --ink-10:     rgba(21, 19, 26, 0.10);
+  --ink-05:     rgba(21, 19, 26, 0.05);
+  --paper:      #faf7f2;
+  --paper-warm: #f2ede4;
+  --white:      #ffffff;
+
+  /* Semantic */
+  --c-fg: var(--ink);
+  --c-fg-muted: var(--ink-60);
+  --c-bg: var(--paper);
+  --c-bg-elev: var(--white);
+  --c-border: var(--ink-10);
+  --c-accent: var(--purple-500);
+
+  /* Gradient brand — use as background-image */
+  --gradient-brand: linear-gradient(
+    110deg,
+    var(--purple-500) 0%,
+    var(--pink-500) 22%,
+    var(--orange-500) 44%,
+    var(--yellow-500) 62%,
+    var(--green-500) 80%,
+    var(--blue-500) 100%
+  );
+  --gradient-brand-conic: conic-gradient(
+    from 210deg at 50% 50%,
+    var(--purple-500),
+    var(--pink-500),
+    var(--orange-500),
+    var(--yellow-500),
+    var(--green-500),
+    var(--blue-500),
+    var(--purple-500)
+  );
+  --gradient-warm: linear-gradient(135deg, var(--pink-500), var(--orange-500) 55%, var(--yellow-500));
+  --gradient-cool: linear-gradient(135deg, var(--purple-500), var(--blue-500));
+
+  /* Typography — ratio 1.25, base 16 */
+  --font-display: 'Fraunces Variable', 'Fraunces', ui-serif, Georgia, serif;
+  --font-body:    'Inter Variable', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:    ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace;
+
+  --fs-xs:   0.8rem;     /* 12.8 */
+  --fs-sm:   0.9rem;
+  --fs-base: 1rem;       /* 16   */
+  --fs-md:   1.25rem;    /* 20   */
+  --fs-lg:   1.5625rem;  /* 25   */
+  --fs-xl:   1.953rem;   /* 31   */
+  --fs-2xl:  2.441rem;   /* 39   */
+  --fs-3xl:  3.052rem;   /* 49   */
+  --fs-4xl:  3.815rem;   /* 61   */
+  --fs-5xl:  4.768rem;   /* 76   */
+  --fs-hero: clamp(2.75rem, 4vw + 2rem, 6.5rem);
+  --fs-h1:   clamp(2.25rem, 2vw + 1.75rem, 4rem);
+  --fs-h2:   clamp(1.875rem, 1.2vw + 1.4rem, 2.75rem);
+  --fs-h3:   clamp(1.375rem, 0.6vw + 1.1rem, 1.75rem);
+
+  --lh-tight:  1.05;
+  --lh-snug:   1.2;
+  --lh-normal: 1.55;
+  --lh-relaxed: 1.7;
+
+  --tracking-tight: -0.02em;
+  --tracking-snug:  -0.01em;
+  --tracking-wide:  0.08em;
+
+  /* Spacing — 4pt grid */
+  --s-1:   0.25rem;
+  --s-2:   0.5rem;
+  --s-3:   0.75rem;
+  --s-4:   1rem;
+  --s-5:   1.5rem;
+  --s-6:   2rem;
+  --s-7:   3rem;
+  --s-8:   4rem;
+  --s-9:   6rem;
+  --s-10:  8rem;
+  --s-11: 12rem;
+
+  /* Widths */
+  --w-prose: 68ch;
+  --w-narrow: 780px;
+  --w-default: 1120px;
+  --w-wide: 1320px;
+  --w-bleed: 1680px;
+
+  /* Radii */
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 24px;
+  --r-xl: 36px;
+  --r-pill: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(21, 19, 26, 0.06), 0 1px 1px rgba(21, 19, 26, 0.04);
+  --shadow-md: 0 8px 24px -8px rgba(21, 19, 26, 0.18), 0 2px 6px rgba(21, 19, 26, 0.06);
+  --shadow-lg: 0 24px 56px -16px rgba(21, 19, 26, 0.28), 0 6px 16px rgba(21, 19, 26, 0.08);
+  --shadow-color: 0 20px 60px -20px var(--purple-500);
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring:   cubic-bezier(0.22, 1.36, 0.4, 1);
+  --ease-smooth:   cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-1: 150ms;
+  --dur-2: 250ms;
+  --dur-3: 400ms;
+  --dur-4: 700ms;
+  --dur-5: 1200ms;
+
+  /* Layout */
+  --nav-h: 104px;
+}
+
+[data-theme='dark'] {
+  --ink:        #f5f2ed;
+  --ink-80:     rgba(245, 242, 237, 0.82);
+  --ink-60:     rgba(245, 242, 237, 0.62);
+  --ink-40:     rgba(245, 242, 237, 0.42);
+  --ink-20:     rgba(245, 242, 237, 0.18);
+  --ink-10:     rgba(245, 242, 237, 0.10);
+  --ink-05:     rgba(245, 242, 237, 0.05);
+  --paper:      #0f0d14;
+  --paper-warm: #1a1720;
+  --white:      #1a1720;
+
+  --c-fg: var(--ink);
+  --c-fg-muted: var(--ink-60);
+  --c-bg: var(--paper);
+  --c-bg-elev: var(--paper-warm);
+  --c-border: rgba(245, 242, 237, 0.10);
+  --c-accent: var(--purple-400);
+
+  color-scheme: dark;
+}

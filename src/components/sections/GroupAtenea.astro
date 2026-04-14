@@ -1,0 +1,121 @@
+---
+import { site } from '@lib/site';
+---
+
+<section class="section group">
+  <div class="container">
+    <div class="group-card">
+      <div class="group-card-bg" aria-hidden="true"></div>
+      <div class="group-content">
+        <span class="eyebrow group-eyebrow">04 · Grupo Atenea</span>
+        <h2 class="display">
+          Diseño y seguridad, bajo el mismo techo.
+        </h2>
+        <p class="group-lede">
+          Atenea Designs es la rama creativa del grupo. Los compañeros de
+          <a href={site.sister.url} rel="noopener"><strong>Atenea Ciberseguridad</strong></a>
+          auditan, blindan y forman a las mismas PYMEs que diseñamos. Una llamada,
+          dos estudios, cero reuniones duplicadas.
+        </p>
+        <div class="group-actions">
+          <a href={site.sister.url} class="btn btn-primary" rel="noopener">Conocer Ciberseguridad →</a>
+          <a href="/servicios/#gestion-integral" class="btn btn-ghost">Nuestro enfoque</a>
+        </div>
+      </div>
+      <div class="group-logos" aria-hidden="true">
+        <div class="group-chip chip-designs">
+          <span class="gradient-text">Atenea</span><span class="script-text">&nbsp;Designs</span>
+        </div>
+        <div class="group-chip chip-security">
+          <span>Atenea</span><span class="group-chip-sub">Ciberseguridad</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .group-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--r-xl);
+    padding: clamp(2.5rem, 5vw, 5rem);
+    background: #15131a;
+    color: #faf7f2;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--s-7);
+    align-items: center;
+    isolation: isolate;
+  }
+  .group-card-bg {
+    position: absolute;
+    inset: -20%;
+    background: var(--gradient-brand-conic);
+    opacity: 0.22;
+    filter: blur(60px);
+    z-index: -1;
+    animation: spin 40s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .group-eyebrow { color: rgba(250, 247, 242, 0.6); }
+  .group h2 {
+    font-size: var(--fs-h1);
+  }
+  .group-lede {
+    color: rgba(250, 247, 242, 0.8);
+    font-size: var(--fs-md);
+    max-width: 52ch;
+    margin-top: var(--s-3);
+  }
+  .group-lede a { color: var(--paper); border-bottom: 1px solid currentColor; }
+  .group-lede strong { color: var(--pink-300); font-weight: 600; }
+
+  .group-actions {
+    display: flex;
+    gap: var(--s-3);
+    margin-top: var(--s-5);
+    flex-wrap: wrap;
+  }
+  .group-actions .btn-primary { background: var(--paper); color: var(--ink); }
+  .group-actions .btn-primary:hover { background: var(--gradient-brand); color: var(--white); }
+  .group-actions .btn-ghost { color: var(--paper); border-color: rgba(255,255,255,0.2); }
+  .group-actions .btn-ghost:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+
+  .group-logos {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    align-items: flex-end;
+  }
+  .group-chip {
+    padding: var(--s-5) var(--s-6);
+    border-radius: var(--r-lg);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--s-2);
+    min-width: 260px;
+    justify-content: center;
+  }
+  .chip-designs .script-text { color: var(--paper); font-style: italic; }
+  .chip-security { font-weight: 500; letter-spacing: var(--tracking-snug); }
+  .group-chip-sub {
+    font-size: var(--fs-sm);
+    color: var(--pink-300);
+    margin-left: var(--s-2);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  @media (max-width: 860px) {
+    .group-card { grid-template-columns: 1fr; }
+    .group-logos { align-items: flex-start; }
+  }
+</style>

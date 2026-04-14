@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 160" role="img" aria-label="Atenea Designs">
+  <defs>
+    <style>
+      .granate { fill: #7a0019; }
+      .ink     { fill: #1a1a1a; }
+      .cream   { fill: #ffd9b8; }
+      .serif   { font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-style: italic; }
+      .mono    { font-family: 'IBM Plex Mono', 'Courier New', monospace; font-weight: 400; letter-spacing: 0.28em; }
+    </style>
+  </defs>
+
+  <!-- Brush-stroke swash under "Atenea", hand-drawn feel -->
+  <path d="M22 98 Q 90 112, 160 100 T 300 96"
+        fill="none" stroke="#ffd9b8" stroke-width="6"
+        stroke-linecap="round" opacity="0.95"/>
+  <!-- Tiny paint drip off the swash -->
+  <circle cx="306" cy="97" r="3.2" class="cream"/>
+
+  <!-- "Atenea" wordmark, italic Playfair -->
+  <text x="20" y="86" class="serif granate" font-size="84">Atenea</text>
+
+  <!-- "DESIGNS" tracked caps below, smaller, ink -->
+  <text x="22" y="138" class="mono ink" font-size="18">D E S I G N S</text>
+</svg>

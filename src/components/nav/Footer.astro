@@ -1,0 +1,189 @@
+---
+import { site, nav } from '@lib/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-sister">
+      <div class="footer-sister-text">
+        <span class="eyebrow">Parte del grupo Atenea</span>
+        <p class="footer-sister-title">
+          ¿Necesitas también seguridad para tu web?
+        </p>
+        <p class="footer-sister-blurb">{site.sister.blurb}</p>
+      </div>
+      <a class="btn btn-ghost" href={site.sister.url} rel="noopener">
+        Visitar {site.sister.name} →
+      </a>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="Atenea Designs">
+          <img src="/logo.png" alt="Atenea Designs" width="260" height="260" />
+        </a>
+        <p class="footer-tagline">{site.description}</p>
+        <div class="footer-social">
+          {site.social.linkedin && <a href={site.social.linkedin} rel="me noopener" aria-label="LinkedIn">LinkedIn</a>}
+          {site.social.instagram && <a href={site.social.instagram} rel="me noopener" aria-label="Instagram">Instagram</a>}
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Navegación</h4>
+        <ul class="footer-list">
+          {nav.map((item) => (<li><a href={item.href}>{item.label}</a></li>))}
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Servicios</h4>
+        <ul class="footer-list">
+          <li><a href="/servicios/#diseno-web">Diseño web</a></li>
+          <li><a href="/servicios/#apps">Aplicaciones</a></li>
+          <li><a href="/servicios/#gestion-integral">Dominio + Hosting</a></li>
+          <li><a href="/servicios/#redisenos">Rediseños</a></li>
+          <li><a href="/servicios/#branding">Branding</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Contacto</h4>
+        <ul class="footer-list">
+          <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          <li><a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a></li>
+          <li>{site.address.locality}, {site.address.region}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© {year} {site.name}. Hecho con mimo en {site.address.locality}.</p>
+      <ul class="footer-legal">
+        <li><a href="/aviso-legal/">Aviso legal</a></li>
+        <li><a href="/politica-privacidad/">Privacidad</a></li>
+        <li><a href="/politica-cookies/">Cookies</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #15131a;
+    color: #faf7f2;
+    padding-block: var(--s-9);
+    position: relative;
+    overflow: hidden;
+  }
+  .footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-brand);
+    opacity: 0.08;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+  .footer-inner { position: relative; z-index: 1; }
+
+  .footer-sister {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-5);
+    padding: var(--s-6);
+    border-radius: var(--r-lg);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: var(--s-8);
+    flex-wrap: wrap;
+  }
+  .footer-sister-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+    line-height: var(--lh-snug);
+    margin-top: var(--s-2);
+  }
+  .footer-sister-blurb { color: rgba(250, 247, 242, 0.7); font-size: var(--fs-sm); }
+  .footer-sister .btn-ghost {
+    color: var(--paper);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  .footer-sister .btn-ghost:hover {
+    background: var(--paper);
+    color: var(--ink);
+    border-color: var(--paper);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--s-6);
+  }
+
+  .footer-logo {
+    display: block;
+    margin-bottom: var(--s-4);
+    filter: drop-shadow(0 8px 24px rgba(228, 53, 127, 0.25));
+  }
+  .footer-logo img {
+    width: 220px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .footer-tagline {
+    color: rgba(250, 247, 242, 0.6);
+    font-size: var(--fs-sm);
+    max-width: 38ch;
+  }
+
+  .footer-social {
+    display: flex; gap: var(--s-4);
+    margin-top: var(--s-4);
+    font-size: var(--fs-sm);
+  }
+  .footer-social a { color: rgba(250, 247, 242, 0.7); }
+  .footer-social a:hover { color: var(--paper); }
+
+  .footer-heading {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: rgba(250, 247, 242, 0.5);
+    margin-bottom: var(--s-4);
+  }
+  .footer-list { display: flex; flex-direction: column; gap: var(--s-2); font-size: var(--fs-sm); }
+  .footer-list a { color: rgba(250, 247, 242, 0.85); }
+  .footer-list a:hover { color: var(--pink-300); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--s-4);
+    margin-top: var(--s-8);
+    padding-top: var(--s-5);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: var(--fs-xs);
+    color: rgba(250, 247, 242, 0.5);
+    flex-wrap: wrap;
+  }
+  .footer-legal { display: flex; gap: var(--s-4); }
+  .footer-legal a { color: inherit; }
+  .footer-legal a:hover { color: var(--paper); }
+
+  @media (max-width: 860px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: span 2; }
+  }
+  @media (max-width: 520px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-brand { grid-column: span 1; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+</style>

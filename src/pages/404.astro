@@ -1,0 +1,30 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Página no encontrada" noindex>
+  <section class="section section-lg">
+    <div class="container container-narrow notfound">
+      <span class="eyebrow">Error 404</span>
+      <h1 class="display notfound-title">
+        Esta página se <em class="script-text">escapó</em> del lienzo.
+      </h1>
+      <p class="notfound-lede">
+        Puede que la hayamos movido o que nunca haya existido. Volvamos a territorio conocido.
+      </p>
+      <a href="/" class="btn btn-brand btn-lg">Volver al inicio</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-5);
+    align-items: center;
+  }
+  .notfound-title { font-size: var(--fs-hero); }
+  .notfound-lede { color: var(--ink-60); font-size: var(--fs-md); max-width: 48ch; }
+</style>

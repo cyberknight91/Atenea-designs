@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /_worker/
+
+Sitemap: https://ateneadesigns.es/sitemap-index.xml

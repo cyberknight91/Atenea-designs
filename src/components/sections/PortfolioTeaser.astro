@@ -1,0 +1,106 @@
+---
+const projects = [
+  { year: '2026', client: 'Tu proyecto', type: 'Web + hosting', accent: 'purple' },
+  { year: '2026', client: 'Disponible', type: 'App a medida', accent: 'pink' },
+  { year: '2026', client: 'Disponible', type: 'Landing · SaaS', accent: 'orange' },
+  { year: '2026', client: 'Disponible', type: 'E-commerce', accent: 'blue' },
+];
+---
+
+<section class="section" id="portfolio">
+  <div class="container">
+    <header class="pf-head">
+      <div>
+        <span class="eyebrow">Portfolio</span>
+        <h2 class="display">Recién abrimos estudio.</h2>
+        <p class="pf-lede">
+          Somos nuevos, no inexpertos. Venimos del diseño de producto y el desarrollo web
+          con más de una década a las espaldas — y buscamos los primeros proyectos bajo
+          el nombre Atenea Designs. Puede ser el tuyo.
+        </p>
+      </div>
+      <a href="/contacto/" class="btn btn-ghost">Empezar el primero →</a>
+    </header>
+
+    <ul class="pf-index">
+      {projects.map((p) => (
+        <li class={`pf-row reveal accent-${p.accent}`}>
+          <span class="pf-year">{p.year}</span>
+          <span class="pf-client">{p.client}</span>
+          <span class="pf-type">{p.type}</span>
+          <span class="pf-dot" aria-hidden="true"></span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .pf-head {
+    display: grid;
+    grid-template-columns: 1.3fr auto;
+    gap: var(--s-6);
+    align-items: end;
+    margin-bottom: var(--s-7);
+  }
+  .pf-head h2 { font-size: var(--fs-h1); margin-top: var(--s-2); }
+  .pf-lede { color: var(--ink-60); font-size: var(--fs-md); margin-top: var(--s-3); max-width: 56ch; }
+
+  .pf-index {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--c-border);
+  }
+  .pf-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 16px;
+    align-items: center;
+    gap: var(--s-4);
+    padding: var(--s-5) var(--s-2);
+    border-bottom: 1px solid var(--c-border);
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-variation-settings: 'opsz' 72, 'SOFT' 40;
+    letter-spacing: -0.01em;
+    transition: background var(--dur-2) var(--ease-out-expo),
+                padding-left var(--dur-2) var(--ease-out-expo);
+  }
+  .pf-row:hover {
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+    padding-left: var(--s-4);
+  }
+  .pf-year {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--ink-40);
+    letter-spacing: var(--tracking-wide);
+  }
+  .pf-client { font-weight: 500; }
+  .pf-type {
+    color: var(--ink-60);
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    font-weight: 400;
+    justify-self: end;
+  }
+  .pf-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    justify-self: end;
+  }
+
+  .accent-purple { --accent: var(--purple-500); }
+  .accent-pink   { --accent: var(--pink-500); }
+  .accent-orange { --accent: var(--orange-500); }
+  .accent-blue   { --accent: var(--blue-500); }
+
+  @media (max-width: 860px) {
+    .pf-head { grid-template-columns: 1fr; }
+    .pf-row {
+      grid-template-columns: 60px 1fr 12px;
+      font-size: var(--fs-md);
+    }
+    .pf-type { display: none; }
+  }
+</style>

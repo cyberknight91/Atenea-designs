@@ -1,0 +1,76 @@
+---
+const steps = [
+  { n: '01', title: 'Llamada inicial', body: 'Media hora de charla. Entendemos el negocio, el público y qué pasa cuando alguien llega a tu web. Salimos con un alcance claro y un precio cerrado.', accent: 'purple' },
+  { n: '02', title: 'Diseño y prototipo', body: 'Dirección de arte, maqueta navegable en Figma y copy inicial. Validas cada pantalla antes de escribir una línea de código.', accent: 'pink' },
+  { n: '03', title: 'Desarrollo en 2–4 semanas', body: 'Construimos con stack moderno y publicamos en staging para que lo pruebes. SEO técnico, accesibilidad y velocidad, de serie.', accent: 'orange' },
+  { n: '04', title: 'Lanzamiento + mantenimiento', body: 'Configuramos dominio, hosting y correos. A partir del mes 2, mantenimiento evolutivo: pequeños cambios, monitorización y mejoras continuas.', accent: 'blue' },
+];
+---
+
+<section class="section process-section">
+  <div class="container">
+    <header class="process-head">
+      <span class="eyebrow">02 · Cómo trabajamos</span>
+      <h2 class="display">Cuatro pasos, una relación larga.</h2>
+    </header>
+    <ol class="process-grid">
+      {steps.map((s) => (
+        <li class={`process-step reveal accent-${s.accent}`}>
+          <span class="process-n">{s.n}</span>
+          <h3 class="process-title">{s.title}</h3>
+          <p class="process-body">{s.body}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .process-section { background: var(--paper-warm); }
+  .process-head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+    margin-bottom: var(--s-8);
+    max-width: 48ch;
+  }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--s-5);
+    counter-reset: step;
+  }
+  .process-step {
+    padding-top: var(--s-5);
+    border-top: 2px solid var(--accent, var(--ink));
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+  .process-n {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-wide);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .process-title {
+    font-size: var(--fs-h3);
+    font-variation-settings: 'opsz' 72, 'SOFT' 40;
+  }
+  .process-body {
+    color: var(--ink-60);
+    font-size: var(--fs-base);
+  }
+  .accent-purple { --accent: var(--purple-500); }
+  .accent-pink   { --accent: var(--pink-500); }
+  .accent-orange { --accent: var(--orange-500); }
+  .accent-blue   { --accent: var(--blue-500); }
+
+  @media (max-width: 860px) {
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .process-grid { grid-template-columns: 1fr; }
+  }
+</style>

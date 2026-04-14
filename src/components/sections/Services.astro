@@ -1,0 +1,151 @@
+---
+import { services } from '@lib/site';
+---
+
+<section class="section" id="servicios">
+  <div class="container">
+    <header class="services-head">
+      <span class="eyebrow">01 · Qué hacemos</span>
+      <h2 class="display services-title">
+        Lo que hacemos, sin paja.
+      </h2>
+      <p class="services-lede">
+        Cinco piezas, un único paraguas. No subcontratamos nada: diseño, código y
+        mantenimiento salen del mismo equipo.
+      </p>
+    </header>
+
+    <div class="services-grid">
+      {services.map((svc, idx) => (
+        <article class={`service-card reveal accent-${svc.accent}`} data-idx={idx}>
+          <div class="service-num" aria-hidden="true">{String(idx + 1).padStart(2, '0')}</div>
+          <h3 class="service-title">{svc.title}</h3>
+          <p class="service-summary">{svc.summary}</p>
+          <ul class="service-bullets">
+            {svc.bullets.map((b) => <li>{b}</li>)}
+          </ul>
+          <a class="service-link" href={`/servicios/#${svc.slug}`}>Saber más →</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+    max-width: 64ch;
+    margin-bottom: var(--s-8);
+  }
+  .services-title {
+    font-size: var(--fs-h1);
+    letter-spacing: var(--tracking-tight);
+  }
+  .services-title em { color: var(--ink); }
+  .services-lede { color: var(--ink-60); font-size: var(--fs-md); max-width: 52ch; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--s-5);
+  }
+  .service-card {
+    grid-column: span 4;
+    padding: var(--s-6);
+    background: var(--c-bg-elev);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-lg);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+    transition: transform var(--dur-3) var(--ease-out-expo), box-shadow var(--dur-3) var(--ease-out-expo), border-color var(--dur-2);
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    inset: auto -40% -40% auto;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: var(--accent, var(--purple-500));
+    opacity: 0.14;
+    filter: blur(40px);
+    transition: transform var(--dur-4) var(--ease-out-expo), opacity var(--dur-3);
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent, var(--purple-500));
+  }
+  .service-card:hover::before {
+    transform: scale(1.4);
+    opacity: 0.28;
+  }
+
+  .accent-purple { --accent: var(--purple-500); }
+  .accent-pink   { --accent: var(--pink-500); }
+  .accent-orange { --accent: var(--orange-500); }
+  .accent-yellow { --accent: var(--yellow-500); }
+  .accent-green  { --accent: var(--green-500); }
+  .accent-blue   { --accent: var(--blue-500); }
+
+  /* First card spans wider for editorial rhythm */
+  .service-card:nth-child(1) { grid-column: span 6; }
+  .service-card:nth-child(2) { grid-column: span 6; }
+
+  .service-num {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-wide);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .service-title {
+    font-size: var(--fs-h3);
+    font-family: var(--font-display);
+    font-variation-settings: 'opsz' 72, 'SOFT' 40;
+  }
+  .service-summary { color: var(--ink-80); font-size: var(--fs-base); }
+  .service-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    margin-top: var(--s-2);
+  }
+  .service-bullets li {
+    font-size: var(--fs-sm);
+    color: var(--ink-60);
+    padding-left: var(--s-4);
+    position: relative;
+  }
+  .service-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.6em;
+    width: 8px; height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .service-link {
+    margin-top: auto;
+    padding-top: var(--s-4);
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    color: var(--accent);
+  }
+  .service-link:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+
+  @media (max-width: 960px) {
+    .service-card,
+    .service-card:nth-child(1),
+    .service-card:nth-child(2) { grid-column: span 6; }
+  }
+  @media (max-width: 640px) {
+    .service-card,
+    .service-card:nth-child(1),
+    .service-card:nth-child(2) { grid-column: span 12; }
+  }
+</style>

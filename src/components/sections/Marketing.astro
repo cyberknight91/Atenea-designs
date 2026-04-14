@@ -1,0 +1,231 @@
+---
+import { marketingPlans } from '@lib/site';
+---
+
+<section class="section marketing-section" id="marketing">
+  <div class="container">
+    <header class="mk-head">
+      <span class="eyebrow">Suma marketing</span>
+      <h2 class="display">
+        Tu web es el escaparate. <span class="mk-muted">Nosotros ponemos la gente dentro.</span>
+      </h2>
+      <p class="mk-lede">
+        Gestión integral de redes, SEO, publicidad y contenido. Se suma a tu plan web
+        o va por libre. Mismo equipo, mismo tono, un solo interlocutor.
+      </p>
+    </header>
+
+    <div class="pricing-grid">
+      {marketingPlans.map((tier) => (
+        <article class={`tier reveal accent-${tier.accent} ${tier.highlight ? 'is-highlight' : ''}`}>
+          {tier.badge && <span class="tier-badge">{tier.badge}</span>}
+          <div class="tier-top">
+            <h3 class="tier-name">{tier.name}</h3>
+            <p class="tier-caption">{tier.caption}</p>
+          </div>
+          <div class="tier-price">
+            {tier.priceFrom && <span class="tier-from">desde</span>}
+            <span class="tier-amount">{tier.price}</span>
+            <span class="tier-currency">€</span>
+            <span class="tier-period">/ mes</span>
+          </div>
+          {tier.originalPrice && (
+            <div class="tier-original">
+              antes <s>{tier.originalPrice}€/mes</s> · precio bloqueado de por vida
+            </div>
+          )}
+          <ul class="tier-features">
+            {tier.features.map((f) => <li>{f}</li>)}
+          </ul>
+          <a class={`btn ${tier.highlight ? 'btn-primary' : 'btn-ghost'}`} href="/contacto/">
+            {tier.cta} →
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <p class="pricing-foot">
+      ¿Prefieres un pack web + marketing?
+      <a href="/contacto/">Te lo combinamos con descuento adicional</a>.
+    </p>
+  </div>
+</section>
+
+<style>
+  .marketing-section {
+    background:
+      radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--green-100) 60%, transparent), transparent 45%),
+      radial-gradient(circle at 10% 90%, color-mix(in srgb, var(--pink-100) 50%, transparent), transparent 45%),
+      var(--paper);
+  }
+  .mk-head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+    max-width: 62ch;
+    margin-bottom: var(--s-8);
+  }
+  .mk-head h2 { font-size: var(--fs-h1); }
+  .mk-muted { color: var(--ink-40); }
+  .mk-lede { color: var(--ink-60); font-size: var(--fs-md); max-width: 52ch; }
+
+  /* Reuse pricing styles (local fallbacks) */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-5);
+    align-items: stretch;
+  }
+
+  .tier {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    padding: var(--s-6);
+    background: var(--c-bg-elev);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-lg);
+    transition: transform var(--dur-3) var(--ease-out-expo),
+                box-shadow var(--dur-3) var(--ease-out-expo),
+                border-color var(--dur-2);
+  }
+  .tier:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent, var(--pink-500));
+  }
+  .tier.is-highlight {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .tier.is-highlight:hover { border-color: var(--accent); }
+
+  .tier-badge {
+    position: absolute;
+    top: calc(var(--s-4) * -1);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent, var(--green-500));
+    color: var(--white);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .tier-top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    padding-bottom: var(--s-4);
+    border-bottom: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+  }
+  .tier-name {
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-variation-settings: 'opsz' 72, 'SOFT' 40;
+    letter-spacing: -0.01em;
+  }
+  .tier-caption {
+    font-size: var(--fs-sm);
+    color: color-mix(in srgb, currentColor 65%, transparent);
+    line-height: var(--lh-snug);
+  }
+
+  .tier-price {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+  .tier-from {
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    font-weight: 500;
+    color: color-mix(in srgb, currentColor 60%, transparent);
+    margin-right: 4px;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+  .tier-amount { font-size: 3.5rem; font-weight: 500; line-height: 1; }
+  .tier-currency { font-size: 1.5rem; font-weight: 500; margin-left: 2px; }
+  .tier-period {
+    font-family: var(--font-body);
+    font-size: var(--fs-sm);
+    color: color-mix(in srgb, currentColor 55%, transparent);
+    margin-left: 4px;
+  }
+  .tier-original {
+    font-size: var(--fs-xs);
+    color: color-mix(in srgb, currentColor 60%, transparent);
+    margin-top: calc(var(--s-2) * -1);
+    font-family: var(--font-mono);
+  }
+  .tier-original s {
+    color: color-mix(in srgb, currentColor 70%, transparent);
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 1.5px;
+  }
+
+  .tier-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    flex: 1;
+  }
+  .tier-features li {
+    font-size: var(--fs-sm);
+    color: color-mix(in srgb, currentColor 80%, transparent);
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.5;
+  }
+  .tier-features li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.55em;
+    width: 8px; height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .tier .btn { margin-top: auto; justify-content: center; }
+  .tier.is-highlight .btn-primary {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .tier.is-highlight .btn-primary:hover {
+    background: var(--accent);
+    color: var(--white);
+  }
+
+  .accent-purple { --accent: var(--purple-500); }
+  .accent-pink   { --accent: var(--pink-500); }
+  .accent-orange { --accent: var(--orange-500); }
+  .accent-yellow { --accent: var(--yellow-500); }
+  .accent-green  { --accent: var(--green-500); }
+  .accent-blue   { --accent: var(--blue-500); }
+
+  .pricing-foot {
+    text-align: center;
+    margin-top: var(--s-7);
+    color: var(--ink-60);
+    font-size: var(--fs-sm);
+  }
+  .pricing-foot a {
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink-20);
+  }
+  .pricing-foot a:hover { border-bottom-color: var(--pink-500); color: var(--pink-500); }
+
+  @media (max-width: 860px) {
+    .pricing-grid { grid-template-columns: 1fr; }
+  }
+</style>
