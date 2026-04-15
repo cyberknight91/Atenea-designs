@@ -6,14 +6,14 @@ import { pricing } from '@lib/site';
   <div class="container">
     <header class="pricing-head">
       <span class="eyebrow pricing-eyebrow">
-        <span class="pricing-live"></span> Oferta de lanzamiento · primeros 10 proyectos
+        <span class="pricing-live"></span> Planes claros · sin sorpresas
       </span>
       <h2 class="display">
         Una cuota clara. <span class="pricing-head-muted">Nada escondido.</span>
       </h2>
       <p class="pricing-lede">
-        Sin inversión inicial, sin permanencia, IVA aparte. Los primeros diez clientes
-        bloquean precio de lanzamiento <strong>para siempre</strong>.
+        Sin inversión inicial, sin permanencia, IVA aparte. Dominio, hosting,
+        correos y mantenimiento <strong>siempre incluidos</strong>.
       </p>
     </header>
 
@@ -31,9 +31,9 @@ import { pricing } from '@lib/site';
             <span class="tier-currency">€</span>
             <span class="tier-period">/ mes</span>
           </div>
-          {tier.originalPrice && (
+          {tier.oneTime && (
             <div class="tier-original">
-              antes <s>{tier.originalPrice}€/mes</s> · precio bloqueado de por vida
+              o <strong>{tier.oneTime}€</strong> en pago único
             </div>
           )}
           <ul class="tier-features">

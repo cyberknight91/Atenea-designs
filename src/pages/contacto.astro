@@ -1,0 +1,247 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { site, faqs } from '@lib/site';
+---
+
+<BaseLayout title="Contacto" description="Cuéntanos tu proyecto. Respondemos en menos de 24 horas laborables.">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Hablemos</span>
+      <h1 class="display page-hero-title">Cuéntanos tu proyecto.</h1>
+      <p class="page-hero-lede">
+        Tanto si tienes algo claro como si sólo una intuición. Te respondemos
+        en menos de 24 horas laborables con una propuesta honesta, sin humo.
+      </p>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="container contact-grid">
+      <form class="contact-form" action={`mailto:${site.email}`} method="post" enctype="text/plain" data-contact-form>
+        <div class="field">
+          <label for="name">Cómo te llamas *</label>
+          <input id="name" name="name" type="text" required autocomplete="name" />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="company">Empresa / proyecto</label>
+            <input id="company" name="company" type="text" autocomplete="organization" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="service">¿Qué te interesa?</label>
+          <select id="service" name="service">
+            <option value="">Selecciona una opción</option>
+            <option>Landing / una página</option>
+            <option>Web corporativa</option>
+            <option>Tienda o reservas</option>
+            <option>App web o móvil</option>
+            <option>Rediseño de web existente</option>
+            <option>Branding y marca</option>
+            <option>Gestión de redes y marketing</option>
+            <option>Aún no lo tengo claro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="budget">Presupuesto mensual aproximado</label>
+          <select id="budget" name="budget">
+            <option value="">Prefiero hablarlo</option>
+            <option>&lt; 100€/mes</option>
+            <option>100 — 250€/mes</option>
+            <option>250 — 500€/mes</option>
+            <option>500€+ / pago único</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Cuéntanos un poco más *</label>
+          <textarea id="message" name="message" rows="5" required placeholder="A qué te dedicas, qué necesitas y para cuándo."></textarea>
+        </div>
+        <label class="check">
+          <input type="checkbox" required />
+          <span>He leído y acepto la <a href="/politica-privacidad/">política de privacidad</a>.</span>
+        </label>
+        <button type="submit" class="btn btn-primary btn-lg">Enviar mensaje →</button>
+        <p class="form-note">También puedes escribirnos directamente a <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+      </form>
+
+      <aside class="contact-aside">
+        <article class="contact-card">
+          <h3>Canales directos</h3>
+          <ul>
+            <li>
+              <span class="contact-label">Email</span>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            </li>
+            <li>
+              <span class="contact-label">Teléfono / WhatsApp</span>
+              <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a>
+            </li>
+            <li>
+              <span class="contact-label">LinkedIn</span>
+              <a href={site.social.linkedin} rel="noopener">Atenea Designs</a>
+            </li>
+            <li>
+              <span class="contact-label">Instagram</span>
+              <a href={site.social.instagram} rel="noopener">@atenea.designs</a>
+            </li>
+          </ul>
+        </article>
+
+        <article class="contact-card contact-card-dark">
+          <h3>Horario</h3>
+          <p>Lunes a viernes, 9:00 — 18:00 (CET).</p>
+          <p class="contact-small">Fuera de horario respondemos al día siguiente.</p>
+        </article>
+
+        <article class="contact-card">
+          <h3>Dónde estamos</h3>
+          <p>{site.address.locality}, {site.address.region}.</p>
+          <p class="contact-small">Trabajamos en remoto con clientes de toda España.</p>
+        </article>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2 class="display">Lo que suelen preguntarnos.</h2>
+      </header>
+      <div class="faq-list">
+        {faqs.map((f) => (
+          <details class="faq-item">
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-block: clamp(3rem, 8vh, 6rem) clamp(2rem, 5vh, 3.5rem);
+    background:
+      radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--blue-100) 60%, transparent), transparent 50%),
+      radial-gradient(circle at 85% 80%, color-mix(in srgb, var(--purple-100) 70%, transparent), transparent 50%);
+  }
+  .page-hero-title { font-size: var(--fs-hero); letter-spacing: -0.035em; font-weight: 400; margin-top: var(--s-3); }
+  .page-hero-lede { max-width: 58ch; font-size: var(--fs-md); color: var(--ink-80); margin-top: var(--s-4); }
+
+  .section { padding-block: clamp(3rem, 7vh, 5rem); }
+  .section-alt { background: var(--paper-warm); border-block: 1px solid var(--c-border); }
+  .section-head { margin-bottom: var(--s-6); }
+  .section-head h2 { font-size: var(--fs-h1); margin-top: var(--s-2); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: var(--s-7);
+    align-items: start;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    background: var(--white);
+    padding: var(--s-6);
+    border: 1px solid var(--c-border);
+    border-radius: 24px;
+    box-shadow: 0 24px 50px -25px rgba(21,19,26,0.18);
+  }
+  .field { display: flex; flex-direction: column; gap: var(--s-2); }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+  .field label {
+    font-size: var(--fs-sm);
+    color: var(--ink-80);
+    font-weight: 500;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--c-border);
+    border-radius: 10px;
+    background: var(--paper);
+    font-size: var(--fs-base);
+    font-family: var(--font-body);
+    color: var(--ink);
+    transition: border-color var(--dur-1) var(--ease-out-expo), box-shadow var(--dur-1) var(--ease-out-expo);
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--purple-500);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--purple-500) 25%, transparent);
+  }
+  .check {
+    display: flex;
+    gap: var(--s-2);
+    align-items: flex-start;
+    font-size: var(--fs-sm);
+    color: var(--ink-60);
+  }
+  .check a { color: var(--ink); text-decoration: underline; }
+  .form-note { font-size: var(--fs-xs); color: var(--ink-60); margin-top: var(--s-2); }
+  .form-note a { color: var(--ink); text-decoration: underline; }
+
+  .contact-aside { display: flex; flex-direction: column; gap: var(--s-4); }
+  .contact-card {
+    padding: var(--s-5);
+    background: var(--white);
+    border: 1px solid var(--c-border);
+    border-radius: 16px;
+  }
+  .contact-card h3 { font-family: var(--font-display); font-size: var(--fs-lg); margin-bottom: var(--s-3); letter-spacing: -0.02em; }
+  .contact-card ul { display: flex; flex-direction: column; gap: var(--s-3); }
+  .contact-card li { display: flex; flex-direction: column; gap: 2px; }
+  .contact-label { font-family: var(--font-mono); font-size: var(--fs-xs); text-transform: uppercase; color: var(--ink-60); letter-spacing: var(--tracking-wide); }
+  .contact-card a { color: var(--ink); font-weight: 500; }
+  .contact-card a:hover { color: var(--purple-500); }
+  .contact-card p { color: var(--ink-80); font-size: var(--fs-sm); }
+  .contact-small { color: var(--ink-60); font-size: var(--fs-xs); margin-top: var(--s-1); }
+  .contact-card-dark { background: var(--ink); color: var(--paper); border: none; }
+  .contact-card-dark h3 { color: var(--paper); }
+  .contact-card-dark p { color: color-mix(in srgb, var(--paper) 80%, transparent); }
+
+  .faq-list { display: flex; flex-direction: column; gap: var(--s-3); max-width: 800px; }
+  .faq-item {
+    background: var(--white);
+    border: 1px solid var(--c-border);
+    border-radius: 12px;
+    padding: var(--s-4) var(--s-5);
+  }
+  .faq-item summary {
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+    letter-spacing: -0.015em;
+    list-style: none;
+    position: relative;
+    padding-right: 2rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 0; top: 0;
+    font-family: var(--font-mono);
+    color: var(--ink-40);
+    transition: transform var(--dur-2) var(--ease-out-expo);
+  }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { margin-top: var(--s-3); color: var(--ink-80); font-size: var(--fs-sm); line-height: 1.6; }
+
+  @media (max-width: 860px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .field-row { grid-template-columns: 1fr; }
+  }
+</style>

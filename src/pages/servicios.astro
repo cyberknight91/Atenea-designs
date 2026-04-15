@@ -1,0 +1,193 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { services, pricing } from '@lib/site';
+
+const detailed = [
+  {
+    slug: 'diseno-web',
+    deliverables: [
+      'Descubrimiento: entrevistas, análisis de competencia y moodboard',
+      'Arquitectura de la información y wireframes en Figma',
+      'Diseño visual con sistema de componentes propio',
+      'Desarrollo en Astro o Next con puntuación Lighthouse 95+',
+      'SEO técnico: metadatos, schema, sitemap, robots, OG',
+      'Formación para que tú (o tu equipo) editéis sin miedo',
+    ],
+    ideal: 'PYMEs, estudios profesionales y marcas personales que necesitan una web que convierta.',
+  },
+  {
+    slug: 'apps',
+    deliverables: [
+      'Taller de discovery y definición del MVP',
+      'Prototipo navegable en Figma validable con usuarios',
+      'Stack moderno: Astro + React, Next.js o React Native',
+      'Backend con Cloudflare Workers, Supabase o Firebase',
+      'Integraciones: Stripe, Notion, HubSpot, WhatsApp API',
+      'Panel de administración para que el cliente tenga el control',
+    ],
+    ideal: 'Startups en pre-seed, SaaS en validación y empresas que necesitan un producto interno.',
+  },
+  {
+    slug: 'gestion-integral',
+    deliverables: [
+      'Registro y gestión de dominio .es, .com o el que quieras',
+      'Hosting en Cloudflare Pages (red global, TLS automático)',
+      'Correos profesionales ilimitados con tu marca',
+      'Copias de seguridad diarias y plan de recuperación',
+      'Monitorización de uptime y rendimiento 24/7',
+      'Soporte técnico en castellano por email y WhatsApp',
+    ],
+    ideal: 'Quien ya tiene web y quiere olvidarse de la infraestructura.',
+  },
+  {
+    slug: 'redisenos',
+    deliverables: [
+      'Auditoría UX/UI y análisis de fricción en embudos',
+      'Auditoría SEO técnica y de contenidos',
+      'Roadmap por fases para migrar sin perder tráfico',
+      'Redirecciones 301 y mapa de URLs documentado',
+      'Rediseño iterativo: primero lo que más convierte',
+      'Medición antes/después con Plausible o GA4',
+    ],
+    ideal: 'Webs que envejecieron mal y necesitan cirugía sin perder su historial SEO.',
+  },
+  {
+    slug: 'branding',
+    deliverables: [
+      'Sesión estratégica: propósito, público y posicionamiento',
+      'Identidad visual: logo, paleta, tipografía y sistema',
+      'Manual de marca práctico (PDF + Figma)',
+      'Plantillas para Instagram, LinkedIn, presentaciones y docs',
+      'Firma de email y papelería digital',
+      'Revisión al cabo de 3 meses para afinar',
+    ],
+    ideal: 'Proyectos que empiezan o marcas que necesitan un reset coherente.',
+  },
+];
+
+const merged = services.map((s) => ({ ...s, ...detailed.find((d) => d.slug === s.slug)! }));
+---
+
+<BaseLayout title="Servicios" description="Diseño web, apps a medida, branding y gestión integral para PYMEs y startups.">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Qué hacemos</span>
+      <h1 class="display page-hero-title">Servicios</h1>
+      <p class="page-hero-lede">
+        Cinco formas de ayudarte a vender más por internet. Se combinan, se adaptan
+        y se pagan por cuota mensual o pago único. Tú eliges.
+      </p>
+    </div>
+  </section>
+
+  {merged.map((s, i) => (
+    <section id={s.slug} class={`service-block ${i % 2 ? 'alt' : ''}`}>
+      <div class="container service-inner">
+        <div class="service-copy">
+          <span class={`chip accent-${s.accent}`}>0{i + 1} · {s.title}</span>
+          <h2 class="service-title">{s.title}</h2>
+          <p class="service-summary">{s.summary}</p>
+          <p class="service-ideal"><strong>Ideal para:</strong> {s.ideal}</p>
+          <ul class="service-deliverables">
+            {s.deliverables.map((d) => <li>{d}</li>)}
+          </ul>
+          <a href="/contacto/" class="btn btn-primary">Pedir presupuesto →</a>
+        </div>
+        <aside class={`service-card accent-${s.accent}`}>
+          <ul class="service-bullets">
+            {s.bullets.map((b) => <li>✓ {b}</li>)}
+          </ul>
+        </aside>
+      </div>
+    </section>
+  ))}
+
+  <section class="section pricing-cta">
+    <div class="container pricing-cta-inner">
+      <div>
+        <h2 class="display">¿Cuánto cuesta?</h2>
+        <p>Desde 49€/mes una landing, 89€/mes una web corporativa completa. Sin permanencia, todo incluido.</p>
+      </div>
+      <a href="/#precios" class="btn btn-primary btn-lg">Ver planes y precios →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-block: clamp(3rem, 8vh, 6rem) clamp(2rem, 5vh, 3.5rem);
+    background:
+      radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--purple-100) 70%, transparent), transparent 50%),
+      radial-gradient(circle at 85% 80%, color-mix(in srgb, var(--pink-100) 60%, transparent), transparent 50%);
+  }
+  .page-hero-title { font-size: var(--fs-hero); letter-spacing: -0.035em; font-weight: 400; margin-top: var(--s-3); }
+  .page-hero-lede { max-width: 58ch; font-size: var(--fs-md); color: var(--ink-80); margin-top: var(--s-4); }
+
+  .service-block { padding-block: clamp(3rem, 8vh, 6rem); border-top: 1px solid var(--c-border); }
+  .service-block.alt { background: var(--paper-warm); }
+  .service-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: var(--s-7);
+    align-items: start;
+  }
+  .service-copy { display: flex; flex-direction: column; gap: var(--s-4); }
+  .service-title { font-family: var(--font-display); font-size: var(--fs-h1); letter-spacing: -0.03em; font-weight: 400; }
+  .service-summary { font-size: var(--fs-md); color: var(--ink-80); max-width: 60ch; }
+  .service-ideal { font-size: var(--fs-sm); color: var(--ink-60); }
+  .service-deliverables { display: flex; flex-direction: column; gap: var(--s-2); margin-block: var(--s-3); }
+  .service-deliverables li {
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--ink-80);
+    font-size: var(--fs-sm);
+    line-height: 1.55;
+  }
+  .service-deliverables li::before {
+    content: '→';
+    position: absolute;
+    left: 0; top: 0;
+    color: var(--ink-40);
+    font-family: var(--font-mono);
+  }
+
+  .service-card {
+    position: sticky;
+    top: calc(var(--nav-h) + var(--s-4));
+    padding: var(--s-6);
+    border-radius: 20px;
+    border: 1px solid var(--c-border);
+    background: var(--white);
+    box-shadow: 0 18px 40px -20px rgba(21, 19, 26, 0.15);
+  }
+  .service-card.accent-purple { border-top: 4px solid var(--purple-500); }
+  .service-card.accent-pink   { border-top: 4px solid var(--pink-500); }
+  .service-card.accent-orange { border-top: 4px solid var(--orange-500); }
+  .service-card.accent-green  { border-top: 4px solid var(--green-500); }
+  .service-card.accent-blue   { border-top: 4px solid var(--blue-500); }
+
+  .service-bullets { display: flex; flex-direction: column; gap: var(--s-3); font-size: var(--fs-sm); }
+  .service-bullets li { color: var(--ink-80); }
+
+  .chip.accent-purple { background: var(--purple-100); color: var(--purple-700, #4a1c7a); }
+  .chip.accent-pink   { background: var(--pink-100); }
+  .chip.accent-orange { background: var(--orange-100); }
+  .chip.accent-green  { background: var(--green-100); }
+  .chip.accent-blue   { background: var(--blue-100); }
+
+  .pricing-cta { background: var(--ink); color: var(--paper); }
+  .pricing-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-6);
+    flex-wrap: wrap;
+  }
+  .pricing-cta h2 { font-size: var(--fs-h1); }
+  .pricing-cta p { color: color-mix(in srgb, var(--paper) 70%, transparent); margin-top: var(--s-2); max-width: 50ch; }
+
+  @media (max-width: 860px) {
+    .service-inner { grid-template-columns: 1fr; }
+    .service-card { position: static; }
+  }
+</style>

@@ -1,0 +1,240 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const concepts = [
+  { title: 'Atenea Ciberseguridad', type: 'Web corporativa', tech: 'Astro + Cloudflare', accent: 'purple', url: 'https://ateneaciberseguridad.es', kind: 'Marca hermana' },
+  { title: 'Atenea Designs', type: 'Estudio digital', tech: 'Astro + diseño editorial', accent: 'pink', url: '/', kind: 'Proyecto propio' },
+];
+
+const capabilities = [
+  { label: 'Webs corporativas', detail: 'Landings, multi-página, blog, multi-idioma.' },
+  { label: 'E-commerce y reservas', detail: 'Stripe, Shopify headless, Calendly embebido.' },
+  { label: 'Apps web y móviles', detail: 'Dashboards, SaaS en validación, apps internas.' },
+  { label: 'Sistemas de diseño', detail: 'Tokens, componentes Figma ↔ código.' },
+];
+
+const stats = [
+  { n: '10+', label: 'años diseñando producto digital' },
+  { n: '40+', label: 'webs y apps entregadas' },
+  { n: '95+', label: 'puntuación media Lighthouse' },
+];
+---
+
+<BaseLayout title="Portfolio" description="Proyectos de Atenea Designs: web, producto digital y branding.">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Portfolio</span>
+      <h1 class="display page-hero-title">Una década diseñando producto digital.</h1>
+      <p class="page-hero-lede">
+        Llevamos años detrás de webs, e-commerce y apps para PYMEs, startups y estudios
+        profesionales. Atenea Designs es la marca con la que empaquetamos toda esa
+        experiencia bajo un mismo techo y una cuota clara.
+      </p>
+      <div class="hero-cta-row">
+        <a href="/contacto/" class="btn btn-primary">Empezar un proyecto →</a>
+        <a href="/servicios/" class="btn btn-ghost">Ver servicios</a>
+      </div>
+      <dl class="portfolio-stats">
+        {stats.map((s) => (
+          <div><dt>{s.n}</dt><dd>{s.label}</dd></div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">En vivo</span>
+        <h2 class="display">Proyectos que puedes visitar hoy.</h2>
+        <p class="section-lede">
+          Muchos de nuestros trabajos viven bajo NDA o en portales internos de cliente.
+          Aquí dejamos los que podemos enseñar públicamente — pide referencias privadas
+          si quieres ver más.
+        </p>
+      </header>
+      <div class="portfolio-grid">
+        {concepts.map((p) => (
+          <a href={p.url} class={`portfolio-card accent-${p.accent}`} rel={p.url.startsWith('http') ? 'noopener' : ''}>
+            <div class="portfolio-mock">
+              <div class="portfolio-mock-bar">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="portfolio-mock-body">
+                <div class="portfolio-mock-title"></div>
+                <div class="portfolio-mock-sub"></div>
+                <div class="portfolio-mock-grid">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-meta">
+              <span class="portfolio-kind">{p.kind}</span>
+              <h3 class="portfolio-title">{p.title}</h3>
+              <p class="portfolio-type">{p.type} · {p.tech}</p>
+              <span class="portfolio-link">Ver el sitio →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <p class="portfolio-note">
+        ¿Quieres ver casos concretos de tu sector (restauración, legal, salud, SaaS…)?
+        <a href="/contacto/">Pídenos referencias privadas</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">Qué podemos construir</span>
+        <h2 class="display">Si te suena a lo tuyo, te encaja.</h2>
+      </header>
+      <div class="caps-grid">
+        {capabilities.map((c) => (
+          <article class="cap-card">
+            <h3>{c.label}</h3>
+            <p>{c.detail}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-strip">
+    <div class="container cta-strip-inner">
+      <h2 class="display">¿Tu proyecto en esta página el año que viene?</h2>
+      <a href="/contacto/" class="btn btn-primary btn-lg">Empezar ahora →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-block: clamp(3rem, 8vh, 6rem) clamp(2rem, 5vh, 3.5rem);
+    background:
+      radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--purple-100) 70%, transparent), transparent 50%),
+      radial-gradient(circle at 80% 70%, color-mix(in srgb, var(--orange-100) 60%, transparent), transparent 50%);
+  }
+  .page-hero-title { font-size: var(--fs-hero); letter-spacing: -0.035em; font-weight: 400; margin-top: var(--s-3); max-width: 18ch; }
+  .page-hero-lede { max-width: 60ch; font-size: var(--fs-md); color: var(--ink-80); margin-top: var(--s-4); }
+  .hero-cta-row { display: flex; gap: var(--s-3); margin-top: var(--s-5); flex-wrap: wrap; }
+
+  .portfolio-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-5);
+    margin-top: var(--s-7);
+    padding-top: var(--s-6);
+    border-top: 1px solid var(--c-border);
+    max-width: 720px;
+  }
+  .portfolio-stats dt {
+    font-family: var(--font-display);
+    font-size: var(--fs-h2);
+    letter-spacing: -0.03em;
+    font-variation-settings: 'opsz' 144;
+  }
+  .portfolio-stats dd {
+    font-size: var(--fs-sm);
+    color: var(--ink-60);
+    margin-top: var(--s-1);
+  }
+  @media (max-width: 640px) { .portfolio-stats { grid-template-columns: 1fr; } }
+
+  .section-lede { color: var(--ink-60); font-size: var(--fs-md); max-width: 55ch; margin-top: var(--s-3); }
+
+  .section { padding-block: clamp(3rem, 7vh, 5rem); }
+  .section-alt { background: var(--paper-warm); border-block: 1px solid var(--c-border); }
+  .section-head { margin-bottom: var(--s-6); }
+  .section-head h2 { font-size: var(--fs-h1); margin-top: var(--s-2); }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--s-5);
+  }
+  .portfolio-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--c-border);
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--white);
+    transition: transform var(--dur-2) var(--ease-out-expo), box-shadow var(--dur-2) var(--ease-out-expo);
+  }
+  .portfolio-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -20px rgba(21,19,26,0.2);
+  }
+  .portfolio-mock {
+    aspect-ratio: 16 / 10;
+    background: var(--paper-warm);
+    border-bottom: 1px solid var(--c-border);
+    display: flex;
+    flex-direction: column;
+  }
+  .portfolio-mock-bar {
+    display: flex;
+    gap: 6px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--c-border);
+  }
+  .portfolio-mock-bar span {
+    width: 9px; height: 9px; border-radius: 50%; background: var(--ink-20);
+  }
+  .portfolio-mock-body {
+    padding: var(--s-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    flex: 1;
+  }
+  .portfolio-mock-title { height: 14px; width: 60%; border-radius: 4px; background: var(--ink); }
+  .portfolio-mock-sub   { height: 10px; width: 40%; border-radius: 4px; background: var(--ink-20); }
+  .portfolio-mock-grid  {
+    margin-top: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .portfolio-mock-grid span {
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--purple-100), var(--pink-300));
+  }
+  .portfolio-card.accent-pink .portfolio-mock-grid span { background: linear-gradient(135deg, var(--pink-100), var(--orange-300)); }
+
+  .portfolio-meta { padding: var(--s-5); display: flex; flex-direction: column; gap: var(--s-2); }
+  .portfolio-kind { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--ink-60); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
+  .portfolio-title { font-family: var(--font-display); font-size: var(--fs-xl); letter-spacing: -0.02em; }
+  .portfolio-type { font-size: var(--fs-sm); color: var(--ink-60); }
+  .portfolio-link { margin-top: var(--s-2); font-size: var(--fs-sm); color: var(--purple-500); font-weight: 500; }
+
+  .portfolio-note { margin-top: var(--s-6); color: var(--ink-60); font-size: var(--fs-sm); }
+  .portfolio-note a { color: var(--ink); text-decoration: underline; }
+
+  .caps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--s-4);
+  }
+  .cap-card {
+    padding: var(--s-5);
+    background: var(--white);
+    border: 1px solid var(--c-border);
+    border-radius: 16px;
+  }
+  .cap-card h3 { font-family: var(--font-display); font-size: var(--fs-lg); letter-spacing: -0.02em; margin-bottom: var(--s-2); }
+  .cap-card p { color: var(--ink-60); font-size: var(--fs-sm); }
+
+  .cta-strip { background: var(--ink); color: var(--paper); }
+  .cta-strip-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--s-6);
+    flex-wrap: wrap;
+  }
+  .cta-strip h2 { font-size: var(--fs-h2); max-width: 22ch; }
+</style>

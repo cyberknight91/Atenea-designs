@@ -29,9 +29,9 @@ import { marketingPlans } from '@lib/site';
             <span class="tier-currency">€</span>
             <span class="tier-period">/ mes</span>
           </div>
-          {tier.originalPrice && (
+          {tier.oneTime && (
             <div class="tier-original">
-              antes <s>{tier.originalPrice}€/mes</s> · precio bloqueado de por vida
+              o <strong>{tier.oneTime}€</strong> en pago único
             </div>
           )}
           <ul class="tier-features">

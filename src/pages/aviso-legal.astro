@@ -1,0 +1,87 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { site } from '@lib/site';
+const today = new Date().toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout title="Aviso Legal" description="Información legal del sitio Atenea Designs." noindex>
+  <section class="legal">
+    <div class="container legal-inner">
+      <span class="eyebrow">Información legal</span>
+      <h1 class="display">Aviso Legal</h1>
+      <p class="legal-date">Última actualización: {today}</p>
+
+      <h2>1. Datos identificativos del titular</h2>
+      <p>
+        En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad
+        de la Información y Comercio Electrónico (LSSICE), se informa al usuario de los
+        siguientes datos:
+      </p>
+      <ul>
+        <li><strong>Titular:</strong> Mario — Atenea Designs (en adelante, "Atenea Designs")</li>
+        <li><strong>Domicilio:</strong> {site.address.locality}, {site.address.region} (España)</li>
+        <li><strong>Correo electrónico:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><strong>Teléfono:</strong> <a href={`tel:${site.phone}`}>{site.phone}</a></li>
+        <li><strong>Dominio:</strong> ateneadesigns.es</li>
+      </ul>
+
+      <h2>2. Objeto</h2>
+      <p>
+        El presente aviso legal regula el uso del sitio web ateneadesigns.es, cuyo
+        titular ofrece información sobre servicios de diseño web, desarrollo de
+        aplicaciones, branding, marketing digital y gestión de infraestructura digital
+        (dominio, hosting y correos) para PYMEs y profesionales.
+      </p>
+
+      <h2>3. Condiciones de uso</h2>
+      <p>
+        El acceso al sitio es libre y gratuito. El usuario se compromete a hacer un uso
+        adecuado de los contenidos y servicios, y a no utilizarlos para actividades
+        ilícitas o contrarias a la buena fe y al orden público.
+      </p>
+      <p>
+        Atenea Designs se reserva el derecho a modificar, actualizar o eliminar
+        contenidos y servicios sin previo aviso.
+      </p>
+
+      <h2>4. Propiedad intelectual e industrial</h2>
+      <p>
+        Todos los contenidos del sitio (textos, imágenes, código, diseño gráfico,
+        marcas y logotipos) son propiedad de Atenea Designs o de terceros que han
+        autorizado su uso. Queda prohibida su reproducción total o parcial sin
+        autorización expresa.
+      </p>
+
+      <h2>5. Responsabilidad</h2>
+      <p>
+        Atenea Designs no se hace responsable de los daños que pudieran derivarse del
+        uso del sitio, de la información en él contenida o del acceso a sitios de
+        terceros enlazados.
+      </p>
+
+      <h2>6. Legislación aplicable y jurisdicción</h2>
+      <p>
+        Este aviso legal se rige por la legislación española. Para cualquier
+        controversia que pudiera derivarse del acceso o uso del sitio, las partes se
+        someten a los juzgados y tribunales de León.
+      </p>
+
+      <h2>7. Contacto</h2>
+      <p>
+        Para cualquier consulta relacionada con este aviso legal, puedes escribirnos
+        a <a href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal { padding-block: clamp(3rem, 7vh, 5rem); }
+  .legal-inner { max-width: 820px; }
+  .legal h1 { font-size: var(--fs-hero); margin: var(--s-3) 0 var(--s-2); letter-spacing: -0.035em; font-weight: 400; }
+  .legal-date { font-family: var(--font-mono); font-size: var(--fs-sm); color: var(--ink-60); margin-bottom: var(--s-7); }
+  .legal h2 { font-family: var(--font-display); font-size: var(--fs-xl); margin-top: var(--s-7); margin-bottom: var(--s-3); letter-spacing: -0.02em; }
+  .legal p, .legal li { color: var(--ink-80); line-height: 1.7; margin-bottom: var(--s-3); }
+  .legal ul { padding-left: 1.25rem; list-style: disc; }
+  .legal a { color: var(--purple-500); text-decoration: underline; }
+</style>
