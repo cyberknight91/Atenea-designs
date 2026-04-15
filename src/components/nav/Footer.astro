@@ -60,7 +60,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="footer-bottom">
-      <p>© {year} {site.name}. Hecho con mimo en {site.address.locality}.</p>
+      <p>© {year} {site.name} · Estudio de diseño digital en {site.address.locality}, España.</p>
       <ul class="footer-legal">
         <li><a href="/aviso-legal/">Aviso legal</a></li>
         <li><a href="/politica-privacidad/">Privacidad</a></li>
@@ -125,15 +125,27 @@ const year = new Date().getFullYear();
   }
 
   .footer-logo {
-    display: block;
-    margin-bottom: var(--s-4);
-    filter: drop-shadow(0 8px 24px rgba(228, 53, 127, 0.25));
+    display: inline-block;
+    margin-bottom: var(--s-5);
+    padding: var(--s-4) var(--s-5);
+    background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    transition: border-color var(--dur-2) var(--ease-out-expo), transform var(--dur-2) var(--ease-spring);
+  }
+  .footer-logo:hover {
+    border-color: rgba(228, 53, 127, 0.4);
+    transform: translateY(-2px);
   }
   .footer-logo img {
-    width: 220px;
+    width: 180px;
     height: auto;
     object-fit: contain;
     display: block;
+    filter:
+      drop-shadow(0 2px 8px rgba(0,0,0,0.4))
+      drop-shadow(0 8px 24px rgba(228, 53, 127, 0.15));
   }
 
   .footer-tagline {
