@@ -2,8 +2,26 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 
 const concepts = [
-  { title: 'Atenea Ciberseguridad', type: 'Web corporativa', tech: 'Astro + Cloudflare', accent: 'purple', url: 'https://ateneaciberseguridad.es', kind: 'Marca hermana' },
-  { title: 'Atenea Designs', type: 'Estudio digital', tech: 'Astro + diseño editorial', accent: 'pink', url: '/', kind: 'Proyecto propio' },
+  {
+    title: 'Atenea Ciberseguridad',
+    type: 'Web corporativa',
+    tech: 'Astro + Cloudflare',
+    accent: 'purple',
+    url: 'https://ateneaciberseguridad.es',
+    kind: 'Marca hermana',
+    urlLabel: 'ateneaciberseguridad.es',
+    screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fateneaciberseguridad.es?w=960&h=600',
+  },
+  {
+    title: 'Atenea Designs',
+    type: 'Estudio digital',
+    tech: 'Astro + diseño editorial',
+    accent: 'pink',
+    url: '/',
+    kind: 'Proyecto propio',
+    urlLabel: 'ateneadesigns.es',
+    screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fateneadesigns.es?w=960&h=600',
+  },
 ];
 
 const capabilities = [
@@ -59,13 +77,10 @@ const stats = [
             <div class="portfolio-mock">
               <div class="portfolio-mock-bar">
                 <span></span><span></span><span></span>
+                <span class="portfolio-mock-url">{p.urlLabel}</span>
               </div>
-              <div class="portfolio-mock-body">
-                <div class="portfolio-mock-title"></div>
-                <div class="portfolio-mock-sub"></div>
-                <div class="portfolio-mock-grid">
-                  <span></span><span></span><span></span>
-                </div>
+              <div class="portfolio-shot">
+                <img src={p.screenshot} alt={`Captura de ${p.title}`} loading="lazy" />
               </div>
             </div>
             <div class="portfolio-meta">
@@ -190,20 +205,39 @@ const stats = [
     gap: var(--s-2);
     flex: 1;
   }
-  .portfolio-mock-title { height: 14px; width: 60%; border-radius: 4px; background: var(--ink); }
-  .portfolio-mock-sub   { height: 10px; width: 40%; border-radius: 4px; background: var(--ink-20); }
-  .portfolio-mock-grid  {
-    margin-top: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+  .portfolio-mock-bar { align-items: center; }
+  .portfolio-mock-url {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ink-60);
+    background: var(--white);
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--c-border);
+    width: auto !important;
+    height: auto !important;
+    border-radius: 999px !important;
   }
-  .portfolio-mock-grid span {
-    aspect-ratio: 1 / 1;
-    border-radius: 8px;
-    background: linear-gradient(135deg, var(--purple-100), var(--pink-300));
+  .portfolio-shot {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(123, 47, 190, 0.08), rgba(233, 60, 126, 0.04));
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
   }
-  .portfolio-card.accent-pink .portfolio-mock-grid span { background: linear-gradient(135deg, var(--pink-100), var(--orange-300)); }
+  .portfolio-shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform var(--dur-3) var(--ease-out-expo);
+  }
+  .portfolio-card:hover .portfolio-shot img { transform: scale(1.03); }
 
   .portfolio-meta { padding: var(--s-5); display: flex; flex-direction: column; gap: var(--s-2); }
   .portfolio-kind { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--ink-60); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
