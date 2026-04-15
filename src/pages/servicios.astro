@@ -1,6 +1,11 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { services, pricing } from '@lib/site';
+import { serviceSchema, breadcrumbSchema } from '@lib/schema';
+const pageSchema = [
+  breadcrumbSchema([{ name: 'Inicio', url: '/' }, { name: 'Servicios', url: '/servicios/' }]),
+  ...serviceSchema(services.map((s) => ({ title: s.title, summary: s.summary, slug: s.slug }))),
+];
 
 const detailed = [
   {
@@ -69,6 +74,7 @@ const merged = services.map((s) => ({ ...s, ...detailed.find((d) => d.slug === s
 ---
 
 <BaseLayout title="Servicios" description="Diseño web, apps a medida, branding y gestión integral para PYMEs y startups.">
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(pageSchema)} />
   <section class="page-hero">
     <div class="container">
       <span class="eyebrow">Qué hacemos</span>
@@ -85,7 +91,7 @@ const merged = services.map((s) => ({ ...s, ...detailed.find((d) => d.slug === s
       <div class="container service-inner">
         <div class="service-copy">
           <span class={`chip accent-${s.accent}`}>0{i + 1} · {s.title}</span>
-          <h2 class="service-title">{s.title}</h2>
+          <h3 class="service-title">{s.title}</h3>
           <p class="service-summary">{s.summary}</p>
           <p class="service-ideal"><strong>Ideal para:</strong> {s.ideal}</p>
           <ul class="service-deliverables">

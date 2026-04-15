@@ -1,9 +1,15 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { site, faqs } from '@lib/site';
+import { faqSchema, breadcrumbSchema } from '@lib/schema';
+const pageSchema = [
+  breadcrumbSchema([{ name: 'Inicio', url: '/' }, { name: 'Contacto', url: '/contacto/' }]),
+  faqSchema(faqs),
+];
 ---
 
 <BaseLayout title="Contacto" description="Cuéntanos tu proyecto. Respondemos en menos de 24 horas laborables.">
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(pageSchema)} />
   <section class="page-hero">
     <div class="container">
       <span class="eyebrow">Hablemos</span>
@@ -60,10 +66,10 @@ import { site, faqs } from '@lib/site';
           <label for="message">Cuéntanos un poco más *</label>
           <textarea id="message" name="message" rows="5" required placeholder="A qué te dedicas, qué necesitas y para cuándo."></textarea>
         </div>
-        <label class="check">
-          <input type="checkbox" required />
-          <span>He leído y acepto la <a href="/politica-privacidad/">política de privacidad</a>.</span>
-        </label>
+        <div class="check">
+          <input id="checkout-privacy" name="privacy" type="checkbox" required />
+          <label for="checkout-privacy">He leído y acepto la <a href="/politica-privacidad/">política de privacidad</a>.</label>
+        </div>
         <button type="submit" class="btn btn-primary btn-lg">Enviar mensaje →</button>
         <p class="form-note">También puedes escribirnos directamente a <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
       </form>

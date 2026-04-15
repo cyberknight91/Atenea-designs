@@ -126,7 +126,7 @@
     filter: blur(80px);
     mix-blend-mode: multiply;
     opacity: 0.55;
-    animation: drift 18s var(--ease-smooth) infinite alternate;
+    animation: drift 12s var(--ease-smooth) infinite alternate;
     will-change: transform;
   }
   .blob-1 {
@@ -400,6 +400,9 @@
     height: 0.12em;
     background: var(--purple-500);
     border-radius: 2px;
+  }
+  @media (max-width: 640px) {
+    .hero-title-accent::after { height: 0.08em; }
   }
 
   .hero-lede {

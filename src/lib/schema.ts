@@ -29,3 +29,40 @@ export function websiteSchema() {
     inLanguage: site.locale,
   };
 }
+
+export function breadcrumbSchema(items: Array<{ name: string; url: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: item.url.startsWith('http') ? item.url : `${site.url}${item.url}`,
+    })),
+  };
+}
+
+export function faqSchema(faqs: Array<{ q: string; a: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  };
+}
+
+export function serviceSchema(services: Array<{ title: string; summary: string; slug: string }>) {
+  return services.map((s) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: s.title,
+    description: s.summary,
+    url: `${site.url}/servicios/#${s.slug}`,
+    provider: { '@type': 'Organization', name: site.name, url: site.url },
+    areaServed: { '@type': 'Country', name: 'España' },
+  }));
+}

@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import { breadcrumbSchema } from '@lib/schema';
+const pageSchema = [breadcrumbSchema([{ name: 'Inicio', url: '/' }, { name: 'Portfolio', url: '/portfolio/' }])];
 
 const concepts = [
   {
@@ -22,6 +24,26 @@ const concepts = [
     urlLabel: 'ateneadesigns.es',
     screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fateneadesigns.es?w=960&h=600',
   },
+  {
+    title: 'El Druida',
+    type: 'E-commerce + Grow Shop',
+    tech: 'Vite + Supabase + Cloudflare',
+    accent: 'green',
+    url: 'https://groweldruida.es',
+    kind: 'Cliente · e-commerce',
+    urlLabel: 'groweldruida.es',
+    screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fgroweldruida.es?w=960&h=600',
+  },
+  {
+    title: 'Víctor Ugiaros',
+    type: 'Web personal',
+    tech: 'Landing · diseño editorial',
+    accent: 'orange',
+    url: 'https://victorugiaros.es',
+    kind: 'Cliente · marca personal',
+    urlLabel: 'victorugiaros.es',
+    screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fvictorugiaros.es?w=960&h=600',
+  },
 ];
 
 const capabilities = [
@@ -39,6 +61,7 @@ const stats = [
 ---
 
 <BaseLayout title="Portfolio" description="Proyectos de Atenea Designs: web, producto digital y branding.">
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(pageSchema)} />
   <section class="page-hero">
     <div class="container">
       <span class="eyebrow">Portfolio</span>
