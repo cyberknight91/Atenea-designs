@@ -8,7 +8,7 @@ export function organizationSchema() {
     url: site.url,
     logo: `${site.url}/logo.png`,
     email: site.email,
-    telephone: site.phone,
+    telephone: [site.phone, site.phone2],
     address: {
       '@type': 'PostalAddress',
       addressLocality: site.address.locality,

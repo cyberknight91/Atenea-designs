@@ -5,8 +5,9 @@ export const site = {
     'Diseñamos y desarrollamos webs y aplicaciones a medida para PYMEs y startups. Dominio, hosting y correos incluidos. Todo bajo una cuota mensual, sin inversión inicial.',
   url: 'https://ateneadesigns.es',
   locale: 'es-ES',
-  email: 'hola@ateneadesigns.es',
+  email: 'contacto@ateneadesigns.es',
   phone: '+34602068307',
+  phone2: '+34694237553',
   address: { locality: 'León', region: 'Castilla y León', country: 'ES' },
   social: {
     linkedin: 'https://www.linkedin.com/company/atenea-designs',
