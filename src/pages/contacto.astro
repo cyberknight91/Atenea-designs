@@ -75,6 +75,27 @@ const pageSchema = [
       </form>
 
       <aside class="contact-aside">
+        <div class="quick-actions">
+          <a class="qa-btn qa-instagram" href={site.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Síguenos en Instagram">
+            <svg class="qa-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.26.07 1.64.07 4.85s0 3.6-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38 3.7 3.7 0 0 1-1.38.9c-.42.16-1.06.36-2.23.41-1.26.06-1.64.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.21 8.78 2.2 12 2.2Zm0 1.98c-3.16 0-3.51 0-4.74.07-1.07.05-1.65.23-2.04.38-.51.2-.88.44-1.26.82-.38.38-.62.75-.82 1.26-.15.39-.33.97-.38 2.04-.06 1.23-.07 1.58-.07 4.74s0 3.51.07 4.74c.05 1.07.23 1.65.38 2.04.2.51.44.88.82 1.26.38.38.75.62 1.26.82.39.15.97.33 2.04.38 1.23.06 1.58.07 4.74.07s3.51 0 4.74-.07c1.07-.05 1.65-.23 2.04-.38.51-.2.88-.44 1.26-.82.38-.38.62-.75.82-1.26.15-.39.33-.97.38-2.04.06-1.23.07-1.58.07-4.74s0-3.51-.07-4.74c-.05-1.07-.23-1.65-.38-2.04a3.4 3.4 0 0 0-.82-1.26 3.4 3.4 0 0 0-1.26-.82c-.39-.15-.97-.33-2.04-.38-1.23-.06-1.58-.07-4.74-.07Zm0 3.36a4.46 4.46 0 1 1 0 8.92 4.46 4.46 0 0 1 0-8.92Zm0 1.98a2.48 2.48 0 1 0 0 4.96 2.48 2.48 0 0 0 0-4.96Zm4.69-2.16a1.04 1.04 0 1 1 0 2.08 1.04 1.04 0 0 1 0-2.08Z"/>
+            </svg>
+            <span class="qa-text">
+              <span class="qa-label">Instagram</span>
+              <span class="qa-handle">@ateneadesigns_</span>
+            </span>
+          </a>
+          <a class="qa-btn qa-whatsapp" href={`https://wa.me/${site.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hola Atenea Designs, me gustaría hablar de un proyecto.')}`} target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">
+            <svg class="qa-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.86 9.86 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91a9.84 9.84 0 0 0-2.91-7.01ZM12.05 20.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.41a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24Zm4.52-6.16c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.06 0 1.21.88 2.39 1 2.55.12.16 1.74 2.66 4.21 3.73.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.66-1.18.21-.58.21-1.08.14-1.18-.06-.1-.22-.16-.47-.28Z"/>
+            </svg>
+            <span class="qa-text">
+              <span class="qa-label">WhatsApp</span>
+              <span class="qa-handle">{site.phone}</span>
+            </span>
+          </a>
+        </div>
+
         <article class="contact-card">
           <h3>Canales directos</h3>
           <ul>
@@ -96,7 +117,7 @@ const pageSchema = [
             </li>
             <li>
               <span class="contact-label">Instagram</span>
-              <a href={site.social.instagram} rel="noopener">@atenea.designs</a>
+              <a href={site.social.instagram} rel="noopener">@ateneadesigns_</a>
             </li>
           </ul>
         </article>
@@ -204,6 +225,66 @@ const pageSchema = [
   .form-note a { color: var(--ink); text-decoration: underline; }
 
   .contact-aside { display: flex; flex-direction: column; gap: var(--s-4); }
+
+  /* Quick action buttons (Instagram + WhatsApp) */
+  .quick-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-3);
+  }
+  .qa-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    padding: var(--s-4);
+    border-radius: 16px;
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-body);
+    transition: transform var(--dur-1) var(--ease-out-expo), box-shadow var(--dur-1) var(--ease-out-expo);
+    box-shadow: 0 12px 32px -16px rgba(21,19,26,0.5);
+  }
+  .qa-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px -16px rgba(21,19,26,0.6);
+  }
+  .qa-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    fill: currentColor;
+  }
+  .qa-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    min-width: 0;
+  }
+  .qa-label {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    opacity: 0.85;
+    font-family: var(--font-mono);
+  }
+  .qa-handle {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .qa-instagram {
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  }
+  .qa-whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  }
+  @media (max-width: 480px) {
+    .quick-actions { grid-template-columns: 1fr; }
+  }
+
   .contact-card {
     padding: var(--s-5);
     background: var(--white);

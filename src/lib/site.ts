@@ -11,7 +11,7 @@ export const site = {
   address: { locality: 'León', region: 'Castilla y León', country: 'ES' },
   social: {
     linkedin: 'https://www.linkedin.com/company/atenea-designs',
-    instagram: 'https://instagram.com/atenea.designs',
+    instagram: 'https://instagram.com/ateneadesigns_',
     behance: '',
   },
   sister: {
