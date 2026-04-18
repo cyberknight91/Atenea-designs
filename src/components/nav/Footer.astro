@@ -78,6 +78,12 @@ const year = new Date().getFullYear();
     position: relative;
     overflow: hidden;
   }
+  /* Dark mode: el paper base es #0f0d14, casi igual al footer.
+     Aclaramos el footer para que siga siendo distinguible. */
+  :global([data-theme='dark']) .footer {
+    background: #221f2a;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
   .footer::before {
     content: '';
     position: absolute;
